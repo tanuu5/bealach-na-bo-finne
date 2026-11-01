@@ -43,6 +43,8 @@ const out = `${html.slice(0, a)}${license}\n<script type="module">${js}</script>
 
 fs.mkdirSync(path.join(ROOT, 'dist'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'dist/index.html'), out);
+// Link-preview image for shared URLs (og:image in index.html points here).
+fs.copyFileSync(path.join(ROOT, 'og-image.jpg'), path.join(ROOT, 'dist/og-image.jpg'));
 console.log(`dist/index.html ${(out.length / 1024).toFixed(0)} KB`);
 
 // Artifact variant: the same page without the document wrapper (the host supplies
